@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
   const registerForm = document.getElementById("registerForm");
 
-  // Get or initialize users array
+  
   let users = JSON.parse(localStorage.getItem("users") || "[]");
 
   if (loginForm) {
@@ -18,14 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Find user
+      
       let user = users.find(u => 
         (u.username && u.username.toLowerCase() === username.toLowerCase()) ||
         (u.email && u.email.toLowerCase() === username.toLowerCase())
       );
 
       if (!user) {
-        // Create new user if doesn't exist
+      
         user = {
           id: Date.now(),
           username: username,
@@ -41,11 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Set logged in user
+      
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       localStorage.setItem("currentUser", JSON.stringify(user));
       
-      // Redirect to home page
+    
       window.location.href = "index.html";
     });
   }
@@ -64,13 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Check if username already exists
+      
       if (users.find(u => u.username && u.username.toLowerCase() === username.toLowerCase())) {
         alert("Username already taken");
         return;
       }
 
-      // Create new user
+      
       const newUser = {
         id: Date.now(),
         username: username,
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ---------- PROFILE FOLLOW BUTTON (profile page only) ----------
+
   const followBtn = document.querySelector(".follow-btn");
   if (followBtn) {
     followBtn.addEventListener("click", () => {
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ---------- PROFILE IMAGE UPLOAD (profile page only) ----------
+
   const imageUpload = document.getElementById("imageUpload");
   const profileImage = document.getElementById("profileImage");
   if (imageUpload && profileImage) {
